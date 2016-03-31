@@ -18,10 +18,7 @@
  */
 package org.jasig.portlet.emailpreview;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import javax.portlet.PortletPreferences;
 import javax.portlet.PortletRequest;
@@ -65,7 +62,30 @@ public final class MailStoreConfiguration {
     // Preferences
     private boolean markMessagesAsRead;
     private boolean allowRenderingEmailContent = true;
-    
+
+    public MailStoreConfiguration() { }
+
+    public MailStoreConfiguration(MailStoreConfiguration that) {
+        this.protocol = that.protocol;
+        this.host = that.host;
+        this.port = that.port;
+        this.inboxFolderName = that.inboxFolderName;
+        this.timeout = that.timeout;
+        this.connectionTimeout = that.connectionTimeout;
+        this.linkServiceKey = that.linkServiceKey;
+        this.authenticationServiceKey = that.authenticationServiceKey;
+        this.allowableAuthenticationServiceKeys = new ArrayList<String>(that.allowableAuthenticationServiceKeys);
+        this.usernameSuffix = that.usernameSuffix;
+        this.displayMailAttribute = that.displayMailAttribute;
+        this.exchangeAutodiscover = that.exchangeAutodiscover;
+        this.mailAccount = that.mailAccount;
+        this.ewsUseMailAttribute = that.ewsUseMailAttribute;
+        this.additionalProperties.putAll(that.additionalProperties);
+        this.javaMailProperties.putAll(that.javaMailProperties);
+        this.markMessagesAsRead = that.markMessagesAsRead;
+        this.allowRenderingEmailContent = that.allowRenderingEmailContent;
+    }
+
     public String getProtocol() {
         return protocol;
     }
